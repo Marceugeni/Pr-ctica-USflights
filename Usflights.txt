@@ -1,0 +1,36 @@
+select * from Flights;
+
+-- exercici 1
+SELECT COUNT(flightID) 
+FROM Flights;
+
+-- exercici 2
+SELECT Origin, AVG(ArrDelay) as Prom_arribades, AVG(DepDelay) as Prom_sortides
+FROM Flights
+GROUP BY Origin;
+
+-- exercici 3
+SELECT Origin, colYear, colMonth, AVG(ArrDelay) as Prom_arribades
+FROM Flights
+GROUP BY Origin, colYear, colMonth;
+
+-- exercici 4
+SELECT USAirports.City, colYear, colMonth, DayOfMonths, AVG(ArrDelay) as Prom_arribades
+From Flights
+JOIN  USAirports on
+flightID = IATA
+Group by City, colyear
+
+-- Exercici 5
+Select UniqueCarrier, colYear, colMonth, Cancelled as total_cancelled
+from Flights
+order by Cancelled asc;
+
+-- Exercici 6
+select distinct TailNum, Distance from Flights
+order by Distance desc limit 10;
+
+-- Exercici 7
+SELECT UniqueCarrier, AVG(ArrDelay) as avgDelay from Flights
+where ArrDelay >= 10
+order by ArrDelay desc;
